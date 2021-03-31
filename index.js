@@ -5,7 +5,8 @@ const app = require('./src/app')
 const port = process.env.PORT || 443
 const options = {
   key: fs.readFileSync("./key.pem"),
-  cert: fs.readFileSync("./cert.pem")
+  cert: fs.readFileSync("./cert.pem"),
+  allowHTTP1: true
 }
 
 http2.createSecureServer(options, app.callback())
