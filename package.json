@@ -1,0 +1,22 @@
+{
+  "name": "unofficial-auto-chess-api",
+  "version": "0.0.1",
+  "description": "unofficial auto chess vng api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "api",
+    "auto chess",
+    "unofficial"
+  ],
+  "author": "didadadida93",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/router": "^10.0.0",
+    "koa": "^2.13.1"
+  }
+}
