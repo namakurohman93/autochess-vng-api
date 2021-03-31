@@ -4,8 +4,8 @@ const app = require('./src/app')
 
 const port = process.env.PORT || 443
 const options = {
-  key: fs.readFileSync("./key.pem"),
-  cert: fs.readFileSync("./cert.pem"),
+  key: fs.readFileSync("/etc/letsencrypt/live/autochess-vng-api.didadadida93.xyz/privkey.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/live/autochess-vng-api.didadadida93.xyz/fullchain.pem"),
   allowHTTP1: true
 }
 
