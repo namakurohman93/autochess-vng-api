@@ -1,5 +1,2 @@
-venv
 .env
 node_modules
-heroes.json
-results
