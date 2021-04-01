@@ -1,9 +1,7 @@
 const Router = require('@koa/router')
 const router = new Router()
 
-router.get("/", (ctx, next) => {
-  ctx.body = { message: "Running!" }
-})
+router.redirect('/', 'https://github.com/didadadida93/autochess-vng-api')
 
 router.get('/heroes', (ctx, next) => {
   ctx.body = ctx.db.get('heroes').value()
