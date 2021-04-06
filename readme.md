@@ -1,5 +1,5 @@
 # Unofficial Autochess VNG API
-This is a RESTApi for get **heroes**, **classes**, and **races** data from
+This is a REST Api for fetch **heroes**, **classes**, and **races** data from
 [autochess vng](https://autochessvng.com).
 
 > Please note that this is unofficial API

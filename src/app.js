@@ -1,4 +1,5 @@
 const Koa = require('koa')
+const cors = require('@koa/cors')
 const lowdb = require('./db')
 const router = require('./router')
 const rateLimiter = require('./rate-limiter')
@@ -8,6 +9,7 @@ async function main(dbPath, points, duration) {
   const db = await lowdb(dbPath)
   const limiter = rateLimiter(points, duration)
 
+  app.use(cors())
   app.use(async (ctx, next) => {
     try {
       await limiter.consume(ctx.ip)
