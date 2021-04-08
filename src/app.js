@@ -3,26 +3,19 @@ const cors = require('@koa/cors')
 const lowdb = require('./db')
 const router = require('./router')
 const rateLimiter = require('./rate-limiter')
+const assignDb = require('./middlewares/assign-db')
+const requestLimiter = require('./middlewares/request-limiter')
+const forceHttps = require('./middlewares/force-https')
 
-async function main(dbPath, points, duration) {
+async function main(dbPath, points, duration, port) {
   const app = new Koa()
   const db = await lowdb(dbPath)
   const limiter = rateLimiter(points, duration)
 
   app.use(cors())
-  app.use(async (ctx, next) => {
-    try {
-      await limiter.consume(ctx.ip)
-      await next()
-    } catch(e) {
-      ctx.status = 429
-      ctx.body = { error: true, message: 'too many requests' }
-    }
-  })
-  app.use(async (ctx, next) => {
-    ctx.db = db
-    await next()
-  })
+  app.use(forceHttps(port))
+  app.use(requestLimiter(limiter))
+  app.use(assignDb(db))
   app.use(router.routes())
 
   return app
