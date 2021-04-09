@@ -1,13 +1,13 @@
 const { RateLimiterRedis } = require('rate-limiter-flexible')
 const Redis = require('ioredis')
 
-module.exports = (points, duration, redisUri) => {
-  const redis = new Redis(redisUri)
+module.exports = () => {
+  const redis = new Redis(process.env.REDIS_URI)
 
   return new RateLimiterRedis({
-    points,
-    duration,
+    points: process.env.RATE_LIMITER_POINTS,
+    duration: process.env.RATE_LIMITER_DURATION,
     storeClient: redis,
-    inmemoryBlockOnConsumed: points
+    inmemoryBlockOnConsumed: process.env.RATE_LIMITER_POINTS
   })
 }

@@ -1,4 +1,4 @@
 const low = require('lowdb')
 const FileAsync = require('lowdb/adapters/FileAsync')
 
-module.exports = dbPath => low(new FileAsync(dbPath))
+module.exports = () => low(new FileAsync(process.env.DB_JSON))
