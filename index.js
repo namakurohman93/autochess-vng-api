@@ -8,9 +8,6 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 const port = process.env.PORT
-const dbPath = process.env.DB_JSON
-const points = process.env.RATE_LIMITER_POINTS
-const duration = process.env.RATE_LIMITER_DURATION
 const httpPort = process.env.HTTP_PORT
 const options = {
   key: fs.readFileSync(process.env.PRIVATE_KEY_DIRECTORY),
@@ -18,8 +15,16 @@ const options = {
   allowHTTP1: true
 }
 
+const appOptions = {
+  port,
+  dbPath: process.env.DB_JSON,
+  points: process.env.RATE_LIMITER_POINTS,
+  duration: process.env.RATE_LIMITER_DURATION,
+  redisUri: process.env.REDIS_URI,
+}
+
 async function main() {
-  const handler = await app(dbPath, points, duration, port)
+  const handler = await app(appOptions)
 
   http.createServer(handler.callback())
     .listen(httpPort, () => console.log('running redirect all http connection'))

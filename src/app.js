@@ -7,14 +7,22 @@ const assignDb = require('./middlewares/assign-db')
 const requestLimiter = require('./middlewares/request-limiter')
 const forceHttps = require('./middlewares/force-https')
 
-async function main(dbPath, points, duration, port) {
+async function main(options) {
+  const {
+    port,
+    dbPath,
+    points,
+    duration,
+    redisUri
+  } = options
+
   const app = new Koa()
   const db = await lowdb(dbPath)
-  const limiter = rateLimiter(points, duration)
+  const limiter = rateLimiter(points, duration, redisUri)
 
   app.use(cors())
-  app.use(forceHttps(port))
   app.use(requestLimiter(limiter))
+  app.use(forceHttps(port))
   app.use(assignDb(db))
   app.use(router.routes())
 
