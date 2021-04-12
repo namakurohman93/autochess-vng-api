@@ -5,7 +5,6 @@ const router = require('./router')
 const rateLimiter = require('./rate-limiter')
 const assignDb = require('./middlewares/assign-db')
 const requestLimiter = require('./middlewares/request-limiter')
-const forceHttps = require('./middlewares/force-https')
 
 async function main() {
   const app = new Koa()
@@ -14,7 +13,6 @@ async function main() {
 
   app.use(cors())
   app.use(requestLimiter(limiter))
-  app.use(forceHttps())
   app.use(assignDb(db))
   app.use(router.routes())
 

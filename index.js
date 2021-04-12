@@ -18,7 +18,10 @@ const options = {
 async function main() {
   const handler = await app()
 
-  http.createServer(handler.callback())
+  http.createServer(function(req, res) {
+    res.writeHead(301, { "Location": "https://" + req.headers.host + req.url })
+    res.end()
+  })
     .listen(httpPort, () => console.log('running redirect all http connection'))
 
   http2.createSecureServer(options, handler.callback())
