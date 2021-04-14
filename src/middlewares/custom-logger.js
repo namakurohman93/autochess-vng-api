@@ -3,7 +3,7 @@ const util = require('util')
 module.exports = () => async (ctx, next) => {
   await next()
 
-  const format = '%s - - [%s] "%s %s HTTP/1.x" %d %s\n'
+  const format = '%s - - [%s] "%s %s HTTP/1.x" %d %s'
   console.log(
     util.format(
       format,
