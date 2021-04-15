@@ -22,11 +22,12 @@ describe('Testing an App', () => {
       it('GET /classes will return an array with length 13', done => {
         request(handler.callback())
           .get('/classes')
-          .end(function(err, res) {
+          .end((err, res) => {
             if (err) {
               return done(err)
             }
 
+            expect(res.statusCode).toBe(200)
             expect(Array.isArray(res.body)).toBe(true)
             expect(res.body.length).toBe(13)
 
@@ -39,11 +40,12 @@ describe('Testing an App', () => {
       it('GET /heroes will return an array with length 72', done => {
         request(handler.callback())
           .get('/heroes')
-          .end(function(err, res) {
+          .end((err, res) => {
             if (err) {
               return done(err)
             }
 
+            expect(res.statusCode).toBe(200)
             expect(Array.isArray(res.body)).toBe(true)
             expect(res.body.length).toBe(72)
 
@@ -56,11 +58,12 @@ describe('Testing an App', () => {
       it('GET /races will return an array with length 15', done => {
         request(handler.callback())
           .get('/races')
-          .end(function(err, res) {
+          .end((err, res) => {
             if (err) {
               return done(err)
             }
 
+            expect(res.statusCode).toBe(200)
             expect(Array.isArray(res.body)).toBe(true)
             expect(res.body.length).toBe(15)
 
