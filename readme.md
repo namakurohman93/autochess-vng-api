@@ -84,4 +84,4 @@ So if you already reach your rate limit, please change your `ip` or wait for **1
 
 You can track how much points left for your `ip` and when it reset by accessing `RateLimit-Remaining` and `RateLimit-Reset` respectively on `response` header.  
 If you already reach your limit, you can check when it reset by accessing `RateLimit-Reset` on `response` header.
-
+> The `RateLimit-Reset` time is set to UTC+0.
