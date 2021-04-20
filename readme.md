@@ -7,6 +7,7 @@ This is a REST Api for fetch **heroes**, **classes**, and **races** data from
 <div align="left">
 <img src="https://img.shields.io/badge/Node.js-43853D?style=plastic&logo=node.js&logoColor=white" alt="NodeJs" />
 <img src="https://img.shields.io/static/v1?message=KoaJs&color=black&style=plastic&label=&logo=javascript" alt="KoaJs" />
+<img src="https://img.shields.io/badge/SQLite-07405E?style=plastic&logo=sqlite&logoColor=white" alt="Sqlite" />
 <img src="https://img.shields.io/badge/redis-CC0000.svg?style=plastic&logo=redis&logoColor=white" alt="redis" />
 <img src="https://img.shields.io/badge/Jest-C21325?style=plastic&logo=jest&logoColor=white" alt="Jest" />
 </div>
