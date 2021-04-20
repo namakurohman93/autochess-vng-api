@@ -1,6 +1,6 @@
 const Koa = require('koa')
 const cors = require('@koa/cors')
-const lowdb = require('./db')
+const initDb = require('./models')
 const router = require('./router')
 const rateLimiter = require('./rate-limiter')
 const assignDb = require('./middlewares/assign-db')
@@ -9,7 +9,7 @@ const customLogger = require('./middlewares/custom-logger')
 
 async function main() {
   const app = new Koa()
-  const db = await lowdb()
+  const db = await initDb()
   const limiter = rateLimiter()
 
   app.use(customLogger())

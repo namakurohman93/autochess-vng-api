@@ -3,16 +3,32 @@ const router = new Router()
 
 router.redirect('/', 'https://github.com/didadadida93/autochess-vng-api')
 
-router.get('/heroes', (ctx, next) => {
-  ctx.body = ctx.db.get('heroes').value()
+router.get('/heroes', async (ctx, next) => {
+  ctx.body = await ctx.db.models.hero.findAll({
+    attributes: {
+      exclude: ['classId']
+    },
+    include: [
+      {
+        model: ctx.db.models.job,
+        as: 'class',
+        attributes: ['name', 'synergies', 'icon']
+      },
+      {
+        model: ctx.db.models.race,
+        attributes: ['name', 'synergies', 'icon'],
+        through: { attributes: [] }
+      }
+    ]
+  })
 })
 
-router.get('/classes', (ctx, next) => {
-  ctx.body = ctx.db.get('classes').value()
+router.get('/classes', async (ctx, next) => {
+  ctx.body = await ctx.db.models.job.findAll()
 })
 
-router.get('/races', (ctx, next) => {
-  ctx.body = ctx.db.get('races').value()
+router.get('/races', async (ctx, next) => {
+  ctx.body = await ctx.db.models.race.findAll()
 })
 
 module.exports = router

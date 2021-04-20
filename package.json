@@ -21,7 +21,9 @@
     "ioredis": "^4.26.0",
     "koa": "^2.13.1",
     "lowdb": "^1.0.0",
-    "rate-limiter-flexible": "^2.2.1"
+    "rate-limiter-flexible": "^2.2.1",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

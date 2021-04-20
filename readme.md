@@ -29,8 +29,27 @@ This endpoint will return a response that contain heroes object.
     name: "Ares",                      // hero's name
     quality: "Common",                 // hero's quality
     cost: 1,                           // hero's cost
-    races: ["Divinity"],               // hero's races
-    class: "Warrior",                  // hero's class
+    races: [                           // hero's races
+      {
+        synergies: [
+          "...",
+          "...",
+          "..."
+        ],
+        name: "Divinity",
+        icon: "https://..."
+      },
+      // ... rest of hero's race
+    ],
+    class: {                           // hero's class detail
+      synergies: [
+        "...",
+        "...",
+        "..."
+      ],
+      name: "Warrior",
+      icon: "https://..."
+    },
     stats: {
       hp: [650, 1300, 2600],           // hero's hp for star 1, 2, 3
       armor: [5, 5, 5],                // hero's armor for star 1, 2, 3
@@ -70,7 +89,8 @@ This endpoint will return a response that contain classes object.
       "(3) All allied warrior ...",
       "(6) All allied warrior ...",
       "(9) All allied warrior ..."
-    ]
+    ],
+    icon: "https://..."              // class's icon
   },
   // ... rest of class
 ]
@@ -88,7 +108,8 @@ This endpoint will return a response that contain classes object.
       "(2) All allied humans ...",
       "(4) All allied humans ...",
       "(6) All allied humans ..."
-    ]
+    ],
+    icon: "https://..."             // race's icon
   },
   // ... rest of race
 ]
