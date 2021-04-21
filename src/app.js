@@ -17,6 +17,10 @@ async function main() {
   app.use(requestLimiter(limiter))
   app.use(assignDb(db))
   app.use(router.routes())
+  app.use(async (ctx, next) => {
+    ctx.status = 404
+    ctx.body = { error: true, message: 'not found' }
+  })
 
   return app
 }
