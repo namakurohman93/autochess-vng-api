@@ -1,11 +1,12 @@
-const request = require('supertest')
-const app = require('../src/app')
+import Koa from 'koa'
+import request from 'supertest'
+import app from '../src/app'
 
 if (process.env.NODE_ENV == 'test') {
   require('dotenv').config()
 }
 
-let handler
+let handler: Koa
 
 describe('Testing an App', () => {
   beforeAll(async done => {
@@ -22,12 +23,13 @@ describe('Testing an App', () => {
       it('GET /classes will return an array with length 13', done => {
         request(handler.callback())
           .get('/classes')
+          .expect(200)
           .end((err, res) => {
             if (err) {
               return done(err)
             }
 
-            expect(res.statusCode).toBe(200)
+            // expect(res.statusCode).toBe(200)
             expect(Array.isArray(res.body)).toBe(true)
             expect(res.body.length).toBe(13)
 
@@ -40,12 +42,13 @@ describe('Testing an App', () => {
       it('GET /heroes will return an array with length 72', done => {
         request(handler.callback())
           .get('/heroes')
+          .expect(200)
           .end((err, res) => {
             if (err) {
               return done(err)
             }
 
-            expect(res.statusCode).toBe(200)
+            // expect(res.statusCode).toBe(200)
             expect(Array.isArray(res.body)).toBe(true)
             expect(res.body.length).toBe(72)
 
@@ -58,12 +61,13 @@ describe('Testing an App', () => {
       it('GET /races will return an array with length 15', done => {
         request(handler.callback())
           .get('/races')
+          .expect(200)
           .end((err, res) => {
             if (err) {
               return done(err)
             }
 
-            expect(res.statusCode).toBe(200)
+            // expect(res.statusCode).toBe(200)
             expect(Array.isArray(res.body)).toBe(true)
             expect(res.body.length).toBe(15)
 

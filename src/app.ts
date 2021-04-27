@@ -13,7 +13,10 @@ export default async function() {
   const db: Sequelize = await initDb()
   const limiter: RateLimiter = rateLimiter()
 
-  app.use(customLogger())
+  if (process.env.NODE_ENV != 'test') {
+    app.use(customLogger())
+  }
+
   app.use(cors())
   app.use(requestLimiter(limiter))
   app.use(assignDb(db))
