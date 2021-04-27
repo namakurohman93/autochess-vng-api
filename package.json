@@ -6,7 +6,8 @@
   "scripts": {
     "test": "NODE_ENV=test npx jest",
     "dev": "NODE_ENV=development npx nodemon --watch 'index.ts' --watch './src/**/*.ts' --exec 'ts-node' index.ts",
-    "start": "nodemon index.js"
+    "start": "npx tsc && nodemon dist/index.js",
+    "build": "npx tsc"
   },
   "keywords": [
     "api",
