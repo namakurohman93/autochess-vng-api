@@ -1,11 +1,13 @@
-module.exports = (sequelize, DataTypes) => {
-  sequelize.define('job', {
+import { Sequelize, DataTypes } from 'sequelize'
+
+export default function(sequelize: Sequelize) {
+  sequelize.define('race', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false
     },
-    name: DataTypes.STRING(10),
+    name: DataTypes.STRING(12),
     synergies: {
       type: DataTypes.TEXT,
       get() {

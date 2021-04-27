@@ -1,9 +1,11 @@
-const Router = require('@koa/router')
-const router = new Router()
+import Router from '@koa/router'
+import { DefaultState, Context } from 'koa'
+
+const router = new Router<DefaultState, Context>()
 
 router.redirect('/', 'https://github.com/didadadida93/autochess-vng-api')
 
-router.get('/heroes', async (ctx, next) => {
+router.get('/heroes', async (ctx: Context) => {
   ctx.body = await ctx.db.models.hero.findAll({
     attributes: {
       exclude: ['classId']
@@ -23,12 +25,12 @@ router.get('/heroes', async (ctx, next) => {
   })
 })
 
-router.get('/classes', async (ctx, next) => {
+router.get('/classes', async (ctx: Context) => {
   ctx.body = await ctx.db.models.job.findAll()
 })
 
-router.get('/races', async (ctx, next) => {
+router.get('/races', async (ctx: Context) => {
   ctx.body = await ctx.db.models.race.findAll()
 })
 
-module.exports = router
+export default router

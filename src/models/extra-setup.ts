@@ -1,6 +1,7 @@
-const fs = require('fs')
+import fs from 'fs'
+import { Sequelize } from 'sequelize'
 
-function defineAssociation(sequelize) {
+export function defineAssociation(sequelize: Sequelize) {
   const { hero, job, race, heroRace } = sequelize.models
 
   job.hasMany(hero, { foreignKey: 'classId' })
@@ -16,9 +17,9 @@ function defineAssociation(sequelize) {
   })
 }
 
-async function seedData(sequelize) {
+export async function seedData(sequelize: Sequelize) {
   const { heroes, classes, races, heroRaces } = JSON.parse(fs.readFileSync(
-    process.env.DB_JSON,
+    process.env.DB_JSON as string,
     'utf8'
   ))
   const { job, hero, race, heroRace } = sequelize.models
@@ -28,5 +29,3 @@ async function seedData(sequelize) {
   await race.bulkCreate(races)
   await heroRace.bulkCreate(heroRaces)
 }
-
-module.exports = { defineAssociation, seedData }

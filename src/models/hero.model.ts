@@ -1,4 +1,6 @@
-module.exports = (sequelize, DataTypes) => {
+import { Sequelize, DataTypes } from 'sequelize'
+
+export default function(sequelize: Sequelize) {
   sequelize.define('hero', {
     id: {
       type: DataTypes.INTEGER,
