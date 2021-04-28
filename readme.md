@@ -6,7 +6,7 @@ This is a REST Api for fetch **heroes**, **classes**, and **races** data from
 
 <div align="left">
 <img src="https://img.shields.io/badge/Node.js-43853D?style=plastic&logo=node.js&logoColor=white" alt="NodeJs" />
-<img src="https://img.shields.io/static/v1?message=KoaJs&color=black&style=plastic&label=&logo=javascript" alt="KoaJs" />
+<img src="https://img.shields.io/static/v1?message=KoaJs&color=black&style=plastic&label=&logo=typescript" alt="KoaJs" />
 <img src="https://img.shields.io/badge/SQLite-07405E?style=plastic&logo=sqlite&logoColor=white" alt="Sqlite" />
 <img src="https://img.shields.io/badge/redis-CC0000.svg?style=plastic&logo=redis&logoColor=white" alt="redis" />
 <img src="https://img.shields.io/badge/Jest-C21325?style=plastic&logo=jest&logoColor=white" alt="Jest" />
@@ -123,3 +123,15 @@ So if you already reach your rate limit, please change your `ip` or wait for **1
 You can track how much points left for your `ip` and when it reset by accessing `RateLimit-Remaining` and `RateLimit-Reset` respectively on `response` header.  
 If you already reach your limit, you can check when it reset by accessing `RateLimit-Reset` on `response` header.
 > The `RateLimit-Reset` time is set to UTC+0.
+
+```bash
+# example of response headers
+
+HTTP/2 200
+vary: Origin
+ratelimit-remaining: 119                          # points left
+ratelimit-reset: Thu, 02 Jan 1970 01:05:00 GMT    # reset time
+content-type: application/json; charset=utf-8
+content-length: 129764
+date: Wed, 01 Jan 1970 01:05:00 GMT
+```
