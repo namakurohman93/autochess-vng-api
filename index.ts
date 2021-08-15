@@ -9,7 +9,6 @@ if (process.env.NODE_ENV == 'development') {
   config()
 }
 
-const port: string = process.env.PORT as string
 const httpPort: string = process.env.HTTP_PORT as string
 
 async function main() {
