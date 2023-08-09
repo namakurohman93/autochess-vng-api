@@ -2,8 +2,6 @@
 This is a REST Api for fetch **heroes**, **classes**, and **races** data from
 [autochess vng](https://autochessvng.com).
 
-> Please note that this is unofficial API
-
 <div align="left">
 <img src="https://img.shields.io/badge/Node.js-43853D?style=plastic&logo=node.js&logoColor=white" alt="NodeJs" />
 <img src="https://img.shields.io/static/v1?message=KoaJs&color=black&style=plastic&label=&logo=typescript" alt="KoaJs" />
