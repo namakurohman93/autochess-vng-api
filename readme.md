@@ -12,9 +12,9 @@ This is a REST Api for fetch **heroes**, **classes**, and **races** data from
 <img src="https://img.shields.io/badge/Jest-C21325?style=plastic&logo=jest&logoColor=white" alt="Jest" />
 </div>
 
-# Root Endpoint
-```md
-https://autochess-vng-api.didadadida93.xyz
+# Start Local Server
+```bash
+npm run dev
 ```
 
 ## Endpoints
